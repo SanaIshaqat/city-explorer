@@ -36,7 +36,7 @@ class App extends Component {
         display_name: responseData.display_name,
         lon: responseData.lon,
         lat: responseData.lat,
-        map:`https://maps.locationiq.com/v3/staticmap?key=pk.93e2fcea94dddafa44a87f456d79afd9&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
+        map:`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
         
         showData:true,
 
