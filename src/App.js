@@ -36,11 +36,14 @@ class App extends Component {
         display_name: responseData.display_name,
         lon: responseData.lon,
         lat: responseData.lat,
+        map:`https://maps.locationiq.com/v3/staticmap?key=pk.93e2fcea94dddafa44a87f456d79afd9&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
+        
         showData:true,
 
       })
 
     })
+
   }
   render() {
     return (
@@ -48,12 +51,14 @@ class App extends Component {
         <h1> WELCOME TO CITY EXPLORER!</h1>
         <br />
         <SearchForm handleLocation={this.handleLocation} handleSubmit={this.handleSubmit} />
+        <br />
         {
           this.state.showData &&
           <Location
           display_name={this.state.display_name}
           lon={this.state.lon}
-          lat={this.state.lat} />
+          lat={this.state.lat}
+          map={this.state.map} />
         }
 
       </div>

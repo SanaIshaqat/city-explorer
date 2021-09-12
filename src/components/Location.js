@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import{Button} from "react-bootstrap";
 
 class Location extends Component {
     render() {
@@ -6,7 +7,9 @@ class Location extends Component {
             <div>
                 <h2>{this.props.display_name}</h2>
                 {/* <h2>{this.type}</h2> */}
-                <h3>{this.props.lat}/{this.props.lon}</h3>
+                <h3>{this.props.lat},{this.props.lon}</h3>
+                <img src={this.props.map} alt="Map" className="img-responsive"/>
+                
             </div>
         )
     }
