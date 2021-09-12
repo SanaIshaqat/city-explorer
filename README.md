@@ -76,31 +76,40 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This Project connects the user to API servers to get data related to cities, hence the name city explorer.
+you input a location and you get further information about it including maps and etc.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+npx create_react_app "Name of project"
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+-React 
+-React Bootstrap
+-axios
+-LocationIQ
+-Netlify
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+12-09-2021 8:01 -Application first feature edits.
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+https://301city-explorer-sana-ishaqat.netlify.app
 
-Name of feature: ________________________________
 
-Estimate of time needed to complete: _____
+## Lab 06
+Name of feature: Searching for data from server and rendering results and map image based on data retrieved from search.
 
-Start time: _____
+Estimate of time needed to complete: 8Hours
 
-Finish time: _____
+Start time:  1:30 pm 
 
-Actual time needed to complete: _____
+Finish time: 10pm
+
+Actual time needed to complete: 8 Hours "Because of errors and troubles in deployment"
 
 
 ![WRRC](WRRC.jpg)
