@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchForm from './components/SearchForm';
 import Location from './components/Location';
 import axios from 'axios';
+import { ListGroup } from 'react-bootstrap';
 
 import React, { Component } from 'react'
 
@@ -14,6 +15,7 @@ class App extends Component {
       lat: "",
       lon: "",
       showData: false,
+      weatherData: [],
     }
   }
   handleLocation = (event) => {
@@ -36,13 +38,22 @@ class App extends Component {
         display_name: responseData.display_name,
         lon: responseData.lon,
         lat: responseData.lat,
-        map:`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
-        
-        showData:true,
+        map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
+
+        showData: true,
 
       })
 
-    })
+    }).then(() => {
+      axios.get(`http://${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}`)
+        .then(res => {
+          console.log(res.data);
+          this.setState({
+            weatherData: res.data,
+
+          })
+        });
+    });
 
   }
   render() {
@@ -55,12 +66,21 @@ class App extends Component {
         {
           this.state.showData &&
           <Location
-          display_name={this.state.display_name}
-          lon={this.state.lon}
-          lat={this.state.lat}
-          map={this.state.map} />
+            display_name={this.state.display_name}
+            lon={this.state.lon}
+            lat={this.state.lat}
+            map={this.state.map} />
         }
+        {this.state.weatherData.map(item => {
+          return <>
+            
+            <ListGroup>
+              <ListGroup.Item>Date: {item.date}</ListGroup.Item>
+              <ListGroup.Item>Description: {item.description}</ListGroup.Item>
 
+            </ListGroup>
+          </>
+        })}
       </div>
     )
   }

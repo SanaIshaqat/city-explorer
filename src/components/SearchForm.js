@@ -14,7 +14,7 @@ export class SearchForm extends Component {
                     placeholder="Country/City Name"
                     onChange={this.props.handleLocation} />
                 <br />
-                <Button variant="primary" type="submit" onClick={this.props.handleSubmit}>
+                <Button variant="info" type="submit" onClick={this.props.handleSubmit}>
                     Explore
                 </Button>
 
