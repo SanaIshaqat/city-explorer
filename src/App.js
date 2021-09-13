@@ -50,12 +50,15 @@ class App extends Component {
           console.log(res.data);
           this.setState({
             weatherData: res.data,
+           
 
           })
+          
         });
     });
-
+    
   }
+  
   render() {
     return (
       <div>

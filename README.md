@@ -113,3 +113,16 @@ Actual time needed to complete: 8 Hours "Because of errors and troubles in deplo
 
 
 ![WRRC](WRRC.jpg)
+
+
+
+## Lab 07
+Name of feature: Searching for data from server and rendering results and map image based on data retrieved from search, then send data to personal API created and render other results related to weather.
+
+Estimate of time needed to complete: 7Hours
+
+Start time:  1 pm 
+
+Finish time: 8pm
+
+Actual time needed to complete: 8 Hours "Because of errors and troubles in deployment"
