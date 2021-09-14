@@ -9,7 +9,7 @@ export class SearchForm extends Component {
         return (
             <div>
 
-                <Form.Label>Please Enter Country/City Name</Form.Label>
+               <h3> <Form.Label>Please Enter Country/City Name</Form.Label></h3>
                 <Form.Control type="text"
                     placeholder="Country/City Name"
                     onChange={this.props.handleLocation} />
