@@ -93,8 +93,8 @@ render() {
         return <>
 
           <ListGroup style={{ width: '25rem' }}>
-            <ListGroup.Item>Date: {item.date}</ListGroup.Item>
-            <ListGroup.Item>Description: {item.description}</ListGroup.Item>
+            <ListGroup.Item>Date: {item.datetime}</ListGroup.Item>
+            <ListGroup.Item>Description: {item.weather.description}</ListGroup.Item>
 
           </ListGroup>
         </>
