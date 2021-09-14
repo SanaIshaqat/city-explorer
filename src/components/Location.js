@@ -1,14 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
+import { Card } from 'react-bootstrap';
 
 
 class Location extends Component {
     render() {
         return (
             <div>
-                <h2>{this.props.display_name}</h2>               
-                <h3>{this.props.lat},{this.props.lon}</h3>
-                <img src={this.props.map} alt="Map" className="img-responsive"/>
+                <Card style={{ width: '25rem' }}>
+                <Card.Img variant="top" src={this.props.map} alt={this.props.display_name} width="800" height="400" />
+                    <Card.Body>
+                        <Card.Title>{this.props.display_name}</Card.Title>
+                        
+                        <Card.Text>
+                        Lat,Long:{this.props.lat},{this.props.lon}
+                        </Card.Text>
+                        
+                    </Card.Body>
+                </Card>
                 
+                
+
             </div>
         )
     }
