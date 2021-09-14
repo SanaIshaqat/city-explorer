@@ -126,3 +126,14 @@ Start time:  1 pm
 Finish time: 8pm
 
 Actual time needed to complete: 8 Hours "Because of errors and troubles in deployment"
+
+## Lab 08
+Name of feature: Searching for data from server and rendering results and map image based on data retrieved from search, then send data to weather-bit API created and render other results related to weather, and the movie db API .
+
+Estimate of time needed to complete: 7Hours
+
+Start time:  1:30 pm 
+
+Finish time: 7:30 pm
+
+Actual time needed to complete: 8 Hours "Because of errors and troubles in linking API back to front"
