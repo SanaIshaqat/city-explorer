@@ -1,3 +1,4 @@
+import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchForm from './components/SearchForm';
 import Location from './components/Location';
@@ -5,8 +6,6 @@ import AlertMsg from "./components/AlertMsg";
 import axios from 'axios';
 import { ListGroup,
 Card } from 'react-bootstrap';
-
-import React, { Component } from 'react'
 
 class App extends Component {
   constructor(props) {
@@ -24,11 +23,9 @@ class App extends Component {
   }
   handleLocation = (event) => {
     let display_name = event.target.value;
-
     this.setState({
       display_name: display_name
     })
-
   }
   handleSubmit = (event) => {
     event.preventDefault();
@@ -37,7 +34,6 @@ class App extends Component {
         showError: true
       })
     } else {
-
       let config = {
         method: "GET",
         baseURL: `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.display_name}&format=json`
@@ -49,22 +45,15 @@ class App extends Component {
           lon: responseData.lon,
           lat: responseData.lat,
           map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
-
           showData: true,
-         
-
         })
-
       }).then(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}`)
           .then(res => {
             console.log(res.data);
             this.setState({
               weatherData: res.data,
-
-
             })
-
           });
       })
         .then(() => {
@@ -80,10 +69,7 @@ console.log('test',this.state.finalCleanedMovies)
             });
         })
     }
-
-
   }
-
   render() {
     return (
       <div>
@@ -93,7 +79,6 @@ console.log('test',this.state.finalCleanedMovies)
           this.state.showError &&
           <AlertMsg />
         }
-
         <SearchForm handleLocation={this.handleLocation} handleSubmit={this.handleSubmit} />
         <br />
         {
@@ -107,18 +92,14 @@ console.log('test',this.state.finalCleanedMovies)
         {this.state.weatherData.map(item => {
           return (
             <>
-
             <ListGroup style={{ width: '25rem' }}>
               <ListGroup.Item>Date: {item.datetime}</ListGroup.Item>
               <ListGroup.Item>Description: {item.weather.description}</ListGroup.Item>
-
             </ListGroup>
             <br />
-
           </>
           )
         })
-
         }
         {
 this.state.rendering &&
@@ -128,46 +109,21 @@ this.state.rendering &&
               <Card style={{ width: '25rem' }}>
                 <Card.Img variant="top" src={item.poster_path} alt={item.title} width="800" height="600" />
                     <Card.Body>
-                        <Card.Title>title: {item.title}</Card.Title>
-                        
+                        <Card.Title>title: {item.title}</Card.Title>                       
                         <Card.Text>
                         Overview: {item.overview}
                         vote_average: {item.vote_average}
                         vote_count: {item.vote_count}                        
                         popularity: {item.popularity}
                         release_date: {item.release_date}
-                        </Card.Text>
-                        
+                        </Card.Text>                        
                     </Card.Body>
-                </Card>
-              {/* <ListGroup style={{ width: '25rem' }}>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item>overview: {item.overview}</ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-              </ListGroup> */}
+                </Card>             
             </>
             )
           }
           )
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
     )
   }
