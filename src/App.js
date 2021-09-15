@@ -3,8 +3,9 @@ import SearchForm from './components/SearchForm';
 import Location from './components/Location';
 import AlertMsg from "./components/AlertMsg";
 import axios from 'axios';
-import { ListGroup,
-Card } from 'react-bootstrap';
+import {
+  ListGroup,
+  Card,} from 'react-bootstrap';
 
 import React, { Component } from 'react'
 
@@ -19,17 +20,18 @@ class App extends Component {
       showData: false,
       weatherData: [],
       showError: false,
-      rendering:false,
+      rendering: false,
     }
   }
+
   handleLocation = (event) => {
     let display_name = event.target.value;
 
     this.setState({
       display_name: display_name
     })
-
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.display_name === "") {
@@ -37,7 +39,6 @@ class App extends Component {
         showError: true
       })
     } else {
-
       let config = {
         method: "GET",
         baseURL: `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.display_name}&format=json`
@@ -48,21 +49,16 @@ class App extends Component {
           display_name: responseData.display_name,
           lon: responseData.lon,
           lat: responseData.lat,
-          map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${responseData.lat},${responseData.lon}&zoom=1-18`,
+          map: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${responseData.lat},${responseData.lon}&zoom=1-10`,
 
           showData: true,
-         
-
         })
-
       }).then(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}`)
           .then(res => {
             console.log(res.data);
             this.setState({
               weatherData: res.data,
-
-
             })
 
           });
@@ -70,18 +66,16 @@ class App extends Component {
         .then(() => {
           axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies?query=${this.state.display_name}`)
             .then(res => {
-              console.log('test',res.data);
+              console.log('test', res.data);
               this.setState({
                 finalCleanedMovies: res.data,
-                rendering:true,
+                rendering: true,
 
               })
-console.log('test',this.state.finalCleanedMovies)
+              console.log('test', this.state.finalCleanedMovies)
             });
         })
     }
-
-
   }
 
   render() {
@@ -93,7 +87,6 @@ console.log('test',this.state.finalCleanedMovies)
           this.state.showError &&
           <AlertMsg />
         }
-
         <SearchForm handleLocation={this.handleLocation} handleSubmit={this.handleSubmit} />
         <br />
         {
@@ -107,70 +100,54 @@ console.log('test',this.state.finalCleanedMovies)
         {this.state.weatherData.map(item => {
           return (
             <>
-
-            <ListGroup style={{ width: '25rem' }}>
-              <ListGroup.Item>Date: {item.datetime}</ListGroup.Item>
-              <ListGroup.Item>Description: {item.weather.description}</ListGroup.Item>
-
-            </ListGroup>
-            <br />
-
-          </>
+              <div class="col d-flex justify-content-center">
+                <ListGroup style={{ width: '50rem' }}>
+                  <ListGroup.Item><h4>Date:</h4> {item.datetime}</ListGroup.Item>
+                  <ListGroup.Item><h4>Description:</h4> {item.weather.description}</ListGroup.Item>
+                </ListGroup>
+                <br />
+              </div>
+            </>
           )
         })
-
         }
         {
-this.state.rendering &&
+          this.state.rendering &&
           this.state.finalCleanedMovies.map(item => {
             return (
               <>
-              <Card style={{ width: '25rem' }}>
-                <Card.Img variant="top" src={item.poster_path} alt={item.title} width="800" height="600" />
-                    <Card.Body>
-                        <Card.Title>title: {item.title}</Card.Title>
-                        
-                        <Card.Text>
-                        Overview: {item.overview}
-                        vote_average: {item.vote_average}
-                        vote_count: {item.vote_count}                        
-                        popularity: {item.popularity}
-                        release_date: {item.release_date}
-                        </Card.Text>
-                        
-                    </Card.Body>
-                </Card>
-              {/* <ListGroup style={{ width: '25rem' }}>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item>overview: {item.overview}</ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-                <ListGroup.Item></ListGroup.Item>
-              </ListGroup> */}
-            </>
+                <div class="col d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <Card style={{ width: '50rem' }}>
+                        <Card.Img variant="top" src={item.poster_path} alt={item.title} width="500" height="1100" />
+                        <Card.Body>
+                          <Card.Title><h2>{item.title}</h2> </Card.Title>
+                          <Card.Text>
+                            <h3>Overview:</h3> {item.overview}
+                            <br />
+                            <h3> Vote_average: </h3>{item.vote_average}
+                            <br />
+                            <h3> Vote_count: </h3>{item.vote_count}
+                            <br />
+                            <h3>Popularity:</h3> {item.popularity}
+                            <br />
+                            <h3> Release_date:</h3> {item.release_date}
+                            <br />
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+                <br />
+              </>
             )
           }
           )
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
     )
   }
 }
-
 export default App
