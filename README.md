@@ -137,3 +137,27 @@ Start time:  1:30 pm
 Finish time: 7:30 pm
 
 Actual time needed to complete: 8 Hours "Because of errors and troubles in linking API back to front"
+
+
+## Lab 09
+Name of feature: Searching for data from server and rendering results and map image based on data retrieved from search, then send data to weather-bit API created and render other results related to weather, and the movie db API .and MCV Architecture for the code structure.
+
+Estimate of time needed to complete: 3Hours
+
+Start time:  5:30 pm 
+
+Finish time: 7:30 pm
+
+Actual time needed to complete: 2Hours 
+
+
+## Lab 10
+Name of feature: Searching for data from server and rendering results and map image based on data retrieved from search, then send data to weather-bit API created and render other results related to weather, and the movie db API .and MCV Architecture for the code structure, saving previously requested data in Cache. 
+
+Estimate of time needed to complete: 5Hours
+
+Start time:  1:30 pm 
+
+Finish time: 5:00 pm
+
+Actual time needed to complete: 3.5 Hours 
