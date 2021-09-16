@@ -54,7 +54,7 @@ class App extends Component {
           showData: true,
         })
       }).then(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}&country=${this.state.display_name}`)
           .then(res => {
             console.log(res.data);
             this.setState({
